@@ -58,4 +58,14 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function workouts()
+    {
+        return $this->hasMany(Workout::class);
+    }
+
+    public function userWorkouts()
+    {
+        return Workout::where('user_id', $this->id)->latest()->with('user')->get();
+    }
 }

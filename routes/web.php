@@ -23,14 +23,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard');
-    Route::get('/workouts', [WorkoutController::class, 'main'])->name('workouts.main');
-    Route::get('/workouts/custom', [WorkoutController::class, 'custom'])->name('workouts.custom');
-    Route::get('/workouts/list', [WorkoutController::class, 'workoutslist'])->name('workouts.list');
-    Route::get('/workouts/current', [WorkoutController::class, 'current'])->name('workouts.current');
+    Route::get('/workouts', [WorkoutController::class, 'main'])->name('workouts');
+    Route::get('/workouts/create', [WorkoutController::class, 'create'])->name('workouts.create');
+    Route::post('/workouts', [WorkoutController::class, 'store'])->name('workouts.store');
+    Route::get('/workouts/{workout}/edit', [WorkoutController::class, 'edit'])->name('workouts.edit');
+    Route::put('/workouts/{workout}', [WorkoutController::class, 'update'])->name('workouts.update');
 });
-
-// Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard');
-// Route::get('/workouts', [WorkoutController::class, 'main'])->name('workouts.main');
-// Route::get('/workouts/custom', [WorkoutController::class, 'custom'])->name('workouts.custom');
-// Route::get('/workouts/list', [WorkoutController::class, 'workoutslist'])->name('workouts.list');
-// Route::get('/workouts/current', [WorkoutController::class, 'current'])->name('workouts.current');

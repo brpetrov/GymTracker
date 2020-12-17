@@ -16,10 +16,10 @@ class CreateExcercisesTable extends Migration
         Schema::create('excercises', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->integer('sets');
+            $table->integer('reps');
             $table->float('weight');
-            $table->foreignId('day_id')->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+            $table->foreignId('day_id');
             $table->timestamps();
         });
     }

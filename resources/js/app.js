@@ -13,6 +13,18 @@ Vue.use(InertiaApp);
 Vue.use(InertiaForm);
 Vue.use(PortalVue);
 
+Vue.mixin({
+    methods: {
+        validationError(field) {
+            if (this.$page.errors.hasOwnProperty(field)) {
+                return this.$page.errors[field][0];
+            }
+
+            return null;
+        }
+    }
+});
+
 const app = document.getElementById("app");
 
 new Vue({
